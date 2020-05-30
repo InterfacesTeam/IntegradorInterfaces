@@ -1,0 +1,103 @@
+@media screen and (max-width: 800px){
+   .rectangulo{
+       width: 60;
+   }
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+body{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    
+}
+
+
+#loginRegister{
+    margin: auto;
+    
+    
+    border-style: solid;
+    
+    background: #FFFFFF;
+    opacity: 0.9;
+    border: 1px solid #00FF85;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+
+    width: 35%;
+    font-size: 22px;
+    padding: 10px;
+    min-height: 400px;
+    min-width: 400px;
+    position: relative;
+    margin-top: 10%;
+    
+}
+
+#imagenUnahur{
+    width: 150px; 
+    height: 150px;
+}
+
+#error{
+    display: none;
+    color: red;
+    font-size: 12px;
+}
+
+.botones{
+    width: 300px;
+    height: 40px;
+    margin: 7px auto;
+    padding: 5px;
+    border-radius: 10px;
+    border-style: none;
+    
+}
+
+.userpass{
+    background: #E6E6E6;
+    color: black;
+}
+
+.userpass:hover{
+    border-color: grey;
+    border-style: solid;
+}
+
+.login{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0085FF;
+    width: 310px;
+    height: 50px;
+    color: white;
+}
+
+.login:hover{
+    font-size: 20px;
+    color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+    transition: all 0.2s ease;
+}
+
+
+#carga{
+    border: 15px solid #cccccc;
+    border-top-color: rgb(0, 142, 189);
+    border-top-style: groove;
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+    animation: girar 1.5s linear infinite;
+    display: none;
+}
+
+@keyframes girar{
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}

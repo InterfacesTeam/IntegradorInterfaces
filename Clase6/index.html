@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body background="img/genteEstudiando3.jpg">
+    <!-- <img src="img/genteEstudiando1.jpg" class="imagenesFondo" id="imagenFondo1">
+    <img src="img/genteEstudiando2.jpeg" class="imagenesFondo" id="imagenFondo2">
+    <img src="img/genteEstudiando3.jpg" class="imagenesFondo" id="imagenFondo3">
+    <img src="img/genteEstudiando4.jpg" class="imagenesFondo" id="imagenFondo4">
+    <img src="img/genteEstudiando5.jpg" class="imagenesFondo" id="imagenFondo5">
+    <img src="img/genteEstudiando6.jpeg" class="imagenesFondo" id="imagenFondo6"> -->
+
+    <div id="loginRegister" align= "center">
+
+        <img src="img/unahur.png" id="imagenUnahur">
+        <form>
+            
+            <input type="text" class ="userpass botones" placeholder="Usuario" id="usuario"> 
+            <br>
+            <input type="password" class ="userpass botones" placeholder="Contraseña" id="contraseña">
+            <h4 id="error">No se ha podido iniciar sesion. Revise si puso los datos correctamente</h4>
+            <br>
+            <button type="button" class="login botones" onclick="redireccionar()">INICIAR SESIÓN</button>
+            <div id="carga"></div>
+            
+        </form>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+</html>

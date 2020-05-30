@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis solicitudes</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/paginaPrincipal.css">
+</head>
+<body>
+    <div>
+        <header id="cabezera"> 
+            <img src="img/unahur.png" id="imagenUnahur">
+        </header>
+    </div>
+    
+    <div id="opciones">
+        <p id="">Acciones de solicitudes</p>
+        <a href="miSolicitud.html"><button type="button" class="btn btn-primary botonesAccion">Nueva solicitud</button></a>
+        <button type="button" class="btn btn-secondary botonesAccion" onclick="editarSolicitud()">Editar solicitud</button>
+        <button type="button" class="btn btn-danger botonesAccion" onclick="eliminarSolicitud()">Eliminar solicitud/es</button>
+    </div>
+
+
+    <table class="table table-striped" id="tablaSolicitudes">
+        <thead>
+            <tr>
+                <th scope="col" id="columna1">Descripción</th>
+                <th scope="col" id="columna2">Fecha</th>
+                <th scope="col" id="columna3">Estado</th>
+                <th scope="col" id="columna4">Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
+
+    <input type="text" placeholder="Descripcion" id="descripcion">
+    <input type="date" placeholder="Fecha" id="fecha">
+    <input type="text" placeholder="Estado" id="estado">
+    <button type="button" onclick="llenarSolicitud()">Guardar</button>
+
+
+
+    <script src="js/paginaPrincipal.js"></script>
+</body>
+</html>
