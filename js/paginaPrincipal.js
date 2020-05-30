@@ -19,7 +19,7 @@ var solicitudes = [
     }
 ]
 
-crearSolicitudEnTabla()
+document.getElementById('#tablaSolicitudes').onload = crearSolicitudEnTabla()
 
 
 
@@ -32,15 +32,16 @@ function agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado){
     }
 
     solicitudes.push(nuevaSolicitud);
-    crearSolicitudEnTabla()
 
+    crearSolicitudEnTabla()
 }
 
 
 function llenarSolicitud(){
     var nuevaDescripción = document.getElementById("descripcion").value,
-    nuevaFecha = document.getElementById("fecha").value,
-    nuevoEstado = document.getElementById("estado").value;
+    f = new Date();
+    nuevaFecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+    nuevoEstado = "Abierto"
 
     agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado);
 }
@@ -77,17 +78,16 @@ function crearSolicitudEnTabla(){
 
 function eliminarSolicitud(){
     var todosLosCheckBox = document.getElementsByClassName("checkBox");
-    
+    var IDCheckeado;
     for(var i = 0; i < todosLosCheckBox.length; i++){
         if(todosLosCheckBox[i].checked){
-            console.log(todosLosCheckBox[i].value)
+            IDCheckeado = todosLosCheckBox[i].value
         }
     }
 
+    console.log(IDCheckeado)
+    solicitudes = solicitudes.filter( solicitud => solicitud.ID != IDCheckeado )
 
-    /*jsonVar.hobbies.forEach(function(currentValue, index, arr){
-        if(jsonVar.hobbies[index].name==name){
-            jsonVar.hobbies.splice(index, index);     
-         }
-        })*/
+    crearSolicitudEnTabla()
+    
 }

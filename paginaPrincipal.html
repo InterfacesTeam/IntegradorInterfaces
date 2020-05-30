@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/paginaPrincipal.css">
 </head>
-<body>
+<body onload='crearSolicitudEnTabla()'>
     <div>
         <header id="cabezera"> 
             <img src="img/unahur.png" id="imagenUnahur">
@@ -34,12 +34,14 @@
         <tbody>
            
         </tbody>
+
+        <input type="text" placeholder="Descripcion" id="descripcion">
+        <input type="date" placeholder="Fecha" id="fecha">
+        <input type="text" placeholder="Estado" id="estado">
+        <button type="button" onclick="llenarSolicitud()">Guardar</button>
     </table>
 
-    <input type="text" placeholder="Descripcion" id="descripcion">
-    <input type="date" placeholder="Fecha" id="fecha">
-    <input type="text" placeholder="Estado" id="estado">
-    <button type="button" onclick="llenarSolicitud()">Guardar</button>
+   
 
 
 

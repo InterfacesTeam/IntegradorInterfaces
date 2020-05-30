@@ -25,11 +25,9 @@ body{
 #opciones{
     font-size: 20px;
     text-align: center;
-    background-color: lightblue;
     margin-left: 2%;
     margin-top: 3%;
-    border: 1px solid;
-    border-color:black;
+    
     position: absolute;
     width: 15%;
 }
