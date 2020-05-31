@@ -1,5 +1,5 @@
-
 actualizarTablaSolicitudes()
+
 
 function actualizarTablaSolicitudes() {
     var solicitudes = Lockr.getAll();
@@ -39,3 +39,5 @@ function eliminarSolicitud(){
     Lockr.rm(IDCheckeado)
     actualizarTablaSolicitudes()   
 }
+
+
