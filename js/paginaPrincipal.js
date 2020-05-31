@@ -19,37 +19,22 @@ var solicitudes = [
     }
 ]
 
-document.getElementById('#tablaSolicitudes').onload = crearSolicitudEnTabla()
+function agregarSolicitud() {
+    var nuevaDescripción = document.getElementById("descripcion").value
+    var f = new Date();
 
-
-
-function agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado){
     var nuevaSolicitud = {
         ID: solicitudes.length + 1,
         Descripción: nuevaDescripción,
-        FechaSolicitud: nuevaFecha,
-        Estado: nuevoEstado
+        Fecha: (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()),
+        Estado: "Abierto"
     }
-
     solicitudes.push(nuevaSolicitud);
-
-    crearSolicitudEnTabla()
+    console.log(solicitudes)
 }
 
-
-function llenarSolicitud(){
-    var nuevaDescripción = document.getElementById("descripcion").value,
-    f = new Date();
-    nuevaFecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-    nuevoEstado = "Abierto"
-
-    agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado);
-}
-
-
-function crearSolicitudEnTabla(){
+function actualizarTablaSolicitudes() {
     tbody = document.querySelector('#tablaSolicitudes tbody');
-
     tbody.innerHTML = '';
 
     for(var i = 0; i < solicitudes.length; i++){
@@ -72,7 +57,6 @@ function crearSolicitudEnTabla(){
         celdaCheckBox.appendChild(checkBox);
 
         tbody.appendChild(fila);
-
     }
 }
 
@@ -84,10 +68,7 @@ function eliminarSolicitud(){
             IDCheckeado = todosLosCheckBox[i].value
         }
     }
-
     console.log(IDCheckeado)
     solicitudes = solicitudes.filter( solicitud => solicitud.ID != IDCheckeado )
-
-    crearSolicitudEnTabla()
-    
+    actualizarTablaSolicitudes()   
 }
