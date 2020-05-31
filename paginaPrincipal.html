@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/paginaPrincipal.css">
 </head>
-<body onload='crearSolicitudEnTabla()'>
-    <div>
-        <header id="cabezera"> 
-            <img src="img/unahur.png" id="imagenUnahur">
-        </header>
-    </div>
+<body onload='actualizarTablaSolicitudes()'>
     
+</body>
+<div>
+    <header id="cabezera"> 
+        <img src="img/unahur.png" id="imagenUnahur">
+    </header>
+</div>
+
     <div id="opciones">
         <p id="">Acciones de solicitudes</p>
         <a href="miSolicitud.html"><button type="button" class="btn btn-primary botonesAccion">Nueva solicitud</button></a>
@@ -26,25 +28,18 @@
         <thead>
             <tr>
                 <th scope="col" id="columna1">Descripción</th>
-                <th scope="col" id="columna2">Fecha</th>
+                <th scope="col" id="columna2">Fecha de emision</th>
                 <th scope="col" id="columna3">Estado</th>
                 <th scope="col" id="columna4">Accion</th>
             </tr>
         </thead>
         <tbody>
-           
+            <!-- Aca van a ir las consultas-->
         </tbody>
-
-        <input type="text" placeholder="Descripcion" id="descripcion">
-        <input type="date" placeholder="Fecha" id="fecha">
-        <input type="text" placeholder="Estado" id="estado">
-        <button type="button" onclick="llenarSolicitud()">Guardar</button>
-    </table>
-
-   
-
-
-
+    
+        
+    </table>    
+    <script src="lockr.js" type="text/javascript"></script>
     <script src="js/paginaPrincipal.js"></script>
 </body>
 </html>
