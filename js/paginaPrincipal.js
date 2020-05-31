@@ -18,20 +18,49 @@ window.solicitudes = [
         "FechaSolicitud": "12/05/2020"
     }
 ]
+mostrarJSON()
 
-function agregarSolicitud() {
-    var nuevaDescripción = document.getElementById("descripcion").value
-    var f = new Date();
 
+
+function agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado){
     var nuevaSolicitud = {
-        ID: window.solicitudes.length + 1,
+        ID: solicitudes.length + 1,
         Descripción: nuevaDescripción,
-        Fecha: (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()),
-        Estado: "Abierto"
+        FechaSolicitud: nuevaFecha,
+        Estado: nuevoEstado
     }
+
     solicitudes.push(nuevaSolicitud);
-    console.log(window.solicitudes)
+
+    crearSolicitudEnTabla()
 }
+
+function llenarSolicitud(){
+    var nuevaDescripción = document.getElementById("descripcion").value,
+    f = new Date();
+    nuevaFecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+    nuevoEstado = "Abierto"
+
+    location.href="paginaPrincipal.html";
+    agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function actualizarTablaSolicitudes() {
     tbody = document.querySelector('#tablaSolicitudes tbody');
