@@ -3,7 +3,9 @@ var botonNuevaSolicitud = document.getElementById("botonNuevaSolicitud");
 var botonEditar = document.getElementById("botonEditar");
 var botonEliminar = document.getElementById("botonEliminar")
 var todosLosCheckBox = document.getElementsByClassName("checkBox");
+var botonSalir = document.getElementById("botonSalir")
 var error = document.getElementById("error");
+
 
 actualizarTablaSolicitudes()
 
@@ -71,4 +73,8 @@ botonEliminar.addEventListener('click', () => {
         Lockr.rm(IDCheckeado())
         actualizarTablaSolicitudes()   
     }
+})
+
+botonSalir.addEventListener('click', () => {
+    location.href="index.html"
 })

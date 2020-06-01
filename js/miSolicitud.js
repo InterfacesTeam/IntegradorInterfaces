@@ -60,3 +60,7 @@ botonGuardar.addEventListener('click', () =>{
 botonCancelar.addEventListener('click', () =>{
     location.href = 'paginaPrincipal.html'
 })
+
+botonSalir.addEventListener('click', () => {
+    location.href="index.html"
+})
