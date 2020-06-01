@@ -6,10 +6,7 @@ var todosLosCheckBox = document.getElementsByClassName("checkBox");
 var botonSalir = document.getElementById("botonSalir")
 var error = document.getElementById("error");
 
-
 actualizarTablaSolicitudes()
-
-
 
 function actualizarTablaSolicitudes() {
     var solicitudes = Lockr.getAll();
