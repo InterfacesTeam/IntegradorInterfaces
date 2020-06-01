@@ -1,5 +1,13 @@
 
+var botonNuevaSolicitud = document.getElementById("botonNuevaSolicitud");
+var botonEditar = document.getElementById("botonEditar");
+var botonEliminar = document.getElementById("botonEliminar")
+var todosLosCheckBox = document.getElementsByClassName("checkBox");
+var error = document.getElementById("error");
+
 actualizarTablaSolicitudes()
+
+
 
 function actualizarTablaSolicitudes() {
     var solicitudes = Lockr.getAll();
@@ -28,14 +36,39 @@ function actualizarTablaSolicitudes() {
         tbody.appendChild(fila);
     }
 }
-function eliminarSolicitud(){
-    var todosLosCheckBox = document.getElementsByClassName("checkBox");
+
+function IDCheckeado(){
     var IDCheckeado;
     for(var i = 0; i < todosLosCheckBox.length; i++){
         if(todosLosCheckBox[i].checked){
             IDCheckeado = todosLosCheckBox[i].value
         }
     }
-    Lockr.rm(IDCheckeado)
-    actualizarTablaSolicitudes()   
+    return IDCheckeado
 }
+
+
+botonNuevaSolicitud.addEventListener('click', () => {
+    Lockr.set('nuevo', null)
+    location.href="miSolicitud.html"
+})
+
+botonEditar.addEventListener('click', () => {
+    if (IDCheckeado() == null) {
+        error.style.display = 'block'
+    }
+    else{
+        Lockr.set('nuevo', IDCheckeado())
+        location.href ="miSolicitud.html";
+    }
+})
+
+botonEliminar.addEventListener('click', () => {
+    if (IDCheckeado() == null) {
+        error.style.display = 'block'
+    }
+    else{
+        Lockr.rm(IDCheckeado())
+        actualizarTablaSolicitudes()   
+    }
+})

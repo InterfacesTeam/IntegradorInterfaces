@@ -4,18 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" href="css/paginaPrincipal.css">
+        <link rel="stylesheet" href="css/miSolicitud.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
     <body>
-        <textarea name="comentarios" rows="10" cols="40" placeholder="Cual es su solicitud" id="descripcion"></textarea>
+
+        <div>
+            <header id="cabezera"> 
+                <img src="img/unahur.png" id="imagenUnahur">
+            </header>
+        </div>
         
-        <a href="paginaPrincipal.html"><button type="button" onClick='llenarSolicitud()' class="btn-primary">Guardar</button></a>
-        <br>
-        <a> 0/150</a>
+        <div class="caja">
+            <input type="text" id="inputEdicion" placeholder="Descripción de la solicitud">
+            <h4 id="error">No puede ingresar una solicitud vacia</h4>
+            <button type="button" class="botones btn btn-primary" id="botonGuardar">Guardar</button>
+            <button type="button" class="botones btn btn-secondary" id="botonCancelar">Cancelar</button>
+        </div>
 
-
-
+        
 
         
         <script src="js/lockr.js" type="text/javascript"></script>

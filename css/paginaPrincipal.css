@@ -67,3 +67,11 @@ body{
     height: 20px;
     width: 20px;
 }
+
+#error{
+    display: none;
+    color: red;
+    width: 50%;
+    font-size: 15px;
+    margin: 1% 38%;
+}
