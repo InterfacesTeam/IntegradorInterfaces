@@ -1,6 +1,7 @@
 var botonGuardar = document.getElementById("botonGuardar");
 var botonCancelar = document.getElementById("botonCancelar");
 var nuevaDescripción = document.getElementById("inputEdicion")
+var idSolicitudVieja = Lockr.get('nuevo')
 
 
 function agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado){
@@ -29,7 +30,29 @@ botonGuardar.addEventListener('click', () =>{
         document.getElementById("error").style.display = "block"
     }
     else{
-        llenarSolicitud()
+
+        if(idSolicitudVieja == null){
+            llenarSolicitud()
+        }
+        else{
+                
+            var solicitudVieja = Lockr.get(idSolicitudVieja)        
+            var fechaSolicitudVieja = solicitudVieja.FechaSolicitud,
+            estadoSolicitudVieja = solicitudVieja.Estado
+            descripcionSolicitudNueva = nuevaDescripción.value;
+            
+            
+            Lockr.set(idSolicitudVieja, {
+                "ID": idSolicitudVieja,
+                "Descripción": descripcionSolicitudNueva,
+                "Estado": estadoSolicitudVieja,
+                "FechaSolicitud": fechaSolicitudVieja
+            })
+        
+            
+        }
+
+        Lockr.rm('nuevo')
         location.href = 'paginaPrincipal.html'
     }
 })

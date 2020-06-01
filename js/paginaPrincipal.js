@@ -1,10 +1,12 @@
-actualizarTablaSolicitudes()
-var botonGuardar = document.getElementById("botonGuardar");
-var botonCancelar = document.getElementById("botonCancelar");
+
+var botonNuevaSolicitud = document.getElementById("botonNuevaSolicitud");
 var botonEditar = document.getElementById("botonEditar");
-var editorSolicitud = document.getElementById("editorSolicitud")
-var nuevaDescripción = document.getElementById("descripcionSolicitudEditada");
+var botonEliminar = document.getElementById("botonEliminar")
 var todosLosCheckBox = document.getElementsByClassName("checkBox");
+var error = document.getElementById("error");
+
+actualizarTablaSolicitudes()
+
 
 
 function actualizarTablaSolicitudes() {
@@ -45,49 +47,28 @@ function IDCheckeado(){
     return IDCheckeado
 }
 
-function eliminarSolicitud(){
 
-    Lockr.rm(IDCheckeado())
-    actualizarTablaSolicitudes()   
-}
+botonNuevaSolicitud.addEventListener('click', () => {
+    Lockr.set('nuevo', null)
+    location.href="miSolicitud.html"
+})
 
-
-botonGuardar.addEventListener('click', () => {
-    if(nuevaDescripción.value == ""){
-        document.getElementById("error").style.display = "block"
+botonEditar.addEventListener('click', () => {
+    if (IDCheckeado() == null) {
+        error.style.display = 'block'
     }
     else{
-        var solicitudVieja = Lockr.get(IDCheckeado())
-        fechaSolicitudVieja = solicitudVieja.FechaSolicitud,
-        estadoSolicitudVieja = solicitudVieja.Estado
-        descripcionSolicitudNueva = nuevaDescripción.value;
-        
-
-        Lockr.set(IDCheckeado(), {
-            "ID": IDCheckeado(),
-            "Descripción": descripcionSolicitudNueva,
-            "Estado": estadoSolicitudVieja,
-            "FechaSolicitud": fechaSolicitudVieja
-        })
-
-        console.log(Lockr.get(IDCheckeado()))
-        console.log(Lockr.getAll())
-
-        actualizarTablaSolicitudes()
-        editorSolicitud.style.display = 'none'
-
+        Lockr.set('nuevo', IDCheckeado())
+        location.href ="miSolicitud.html";
     }
 })
 
-botonEditar.addEventListener('click' , () => {
-   
-    if(IDCheckeado() == null){
-        console.log("Hola")
-    }else{
-        editorSolicitud.style.display = 'block'
+botonEliminar.addEventListener('click', () => {
+    if (IDCheckeado() == null) {
+        error.style.display = 'block'
     }
-})
-
-botonCancelar.addEventListener('click', () =>{
-    editorSolicitud.style.display = 'none'
+    else{
+        Lockr.rm(IDCheckeado())
+        actualizarTablaSolicitudes()   
+    }
 })

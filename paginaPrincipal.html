@@ -18,9 +18,9 @@
 
     <div id="opciones">
         <p id="">Acciones de solicitudes</p>
-        <a href="miSolicitud.html"><button type="button" class="btn btn-primary botonesAccion">Nueva solicitud</button></a>
+        <button type="button" class="btn btn-primary botonesAccion" id="botonNuevaSolicitud">Nueva solicitud</button>
         <button type="button" class="btn btn-secondary botonesAccion" id="botonEditar">Editar solicitud</button>
-        <button type="button" class="btn btn-danger botonesAccion" onclick="eliminarSolicitud()">Eliminar solicitud/es</button>
+        <button type="button" class="btn btn-danger botonesAccion" id="botonEliminar">Eliminar solicitud/es</button>
     </div>
 
 
@@ -38,14 +38,7 @@
         </tbody>
     </table>    
 
-    <div id="editorSolicitud">
-        <input type="text" id="descripcionSolicitudEditada">
-        <h4 id="error">No puede ingresar una solicitud vacia</h4>
-        <button type="button" class="botones btn btn-primary" id="botonGuardar">Guardar</button>
-        <button type="button" class="botones btn btn-secondary" id="botonCancelar">Cancelar</button>
-
-    </div>
-
+    <h4 id="error">No se puede seguir, por favor marque una solicitud</h4>
 
     <script src="lockr.js" type="text/javascript"></script>
     <script src="js/paginaPrincipal.js"></script>
