@@ -1,3 +1,21 @@
+
+#cabezera{
+    border-bottom: 1px solid;
+    border-color: grey;
+    margin: auto;
+    position: relative;
+    
+    
+}
+
+#imagenUnahur{
+    width: 100px; 
+    height: 100px;
+    align-self: center;
+    position: relative;
+}
+
+
 .caja{
     position: relative;
     width: 50%;
