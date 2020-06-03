@@ -10,9 +10,7 @@ body{
     border-bottom: 1px solid;
     border-color: grey;
     margin: auto;
-    position: relative;
-    
-    
+    position: relative;   
 }
 
 #imagenUnahur{
@@ -33,32 +31,40 @@ body{
     text-align: center;
     margin-left: 2%;
     margin-top: 3%;
-    
+    border-color: gray;
+    border: 1px solid; 
+    border-radius: 10px;   
     position: absolute;
     width: 15%;
 }
 
 #tituloOpciones{
-    margin-top: 1% ;
+    margin-top: 2% ;
 }
 
 .botonesAccion{
     font-size: 13px;
-    margin: 2%;
+    margin: 2% auto;
     width: 95%;
+}
+
+#botonNuevaSolicitud{
+    margin-top: 0%;
 }
 
 #tablaSolicitudes{
     margin: 3% auto;
     width: 60%;
+    border-bottom: 1px solid;
+    border-color: lightgrey;
 }
 
 #columna1{
-    width: 65%;
+    width: 62%;
 }
 
 #columna2{
-    width: 12%;
+    width: 15%;
 }
 
 #columna3{
@@ -79,6 +85,5 @@ body{
     color: red;
     width: 50%;
     font-size: 15px;
-    margin: 1% 38%;
+    margin: 1% 40%;
 }
-

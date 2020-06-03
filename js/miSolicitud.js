@@ -58,9 +58,18 @@ botonGuardar.addEventListener('click', () =>{
 })
 
 botonCancelar.addEventListener('click', () =>{
+    Lockr.rm('nuevo')
     location.href = 'paginaPrincipal.html'
 })
 
 botonSalir.addEventListener('click', () => {
     location.href="index.html"
 })
+
+
+if(idSolicitudVieja == null){
+    nuevaDescripción.placeholder="Descripción de la solicitud"
+}
+else{
+    nuevaDescripción.placeholder = Lockr.get(idSolicitudVieja).Descripción
+}

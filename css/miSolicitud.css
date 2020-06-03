@@ -1,11 +1,13 @@
+#cabezera{
+    margin: auto;
+    position: relative;
+}
 
 #cabezera{
     border-bottom: 1px solid;
     border-color: grey;
     margin: auto;
-    position: relative;
-    
-    
+    position: relative;   
 }
 
 #imagenUnahur{
@@ -21,16 +23,14 @@
     margin-right: 1.5%;
 }
 
-
 .caja{
     position: relative;
     width: 50%;
     height: 20%;
     padding: 1%;
-    margin: 10% auto;
+    margin: 5% auto;
     border: 1px;
-    border-color: black;
-    border-style: solid;
+    
 }
 
 #inputEdicion{
@@ -41,7 +41,7 @@
 }
 
 .botones{
-    height: 20%;   
+    
     height: 10%;
     padding: 3px;
     margin-top: 2%;
@@ -59,3 +59,46 @@
     margin: 1% 35%;
 }
 
+
+.imagenesSliders{
+    width: 600px;
+    height: 500px;
+}
+
+.slider{
+    width: 60%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider ul{
+    display: flex;
+    padding: 0;
+    width: 400%;
+
+    animation: cambio 15s infinite alternate linear;
+    
+}
+
+.slider li{
+    width: 100%;
+    list-style: none;
+}
+
+.slider img{
+    width: 100%;
+}
+
+@keyframes cambio {
+    0% { margin-left: 0;}
+    20% { margin-left: 0;}
+
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+}
