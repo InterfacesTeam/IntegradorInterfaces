@@ -4,7 +4,9 @@ var botonEditar = document.getElementById("botonEditar");
 var botonEliminar = document.getElementById("botonEliminar")
 var botonDebugear = document.getElementById("botonDebugear")
 var todosLosCheckBox = document.getElementsByClassName("checkBox");
-var botonSalir = document.getElementById("botonSalir")
+var botonSalir = document.getElementById("botonSalir");
+var botonUsuarios = document.getElementById("botonUsuarios");
+var botonPaginaPrincipal = document.getElementById("botonPaginaPrincipal");
 var error = document.getElementById("error");
 
 console.log("Hola")
@@ -77,6 +79,14 @@ botonEliminar.addEventListener('click', () => {
 
 botonSalir.addEventListener('click', () => {
     location.href="index.html"
+});
+
+botonPaginaPrincipal.addEventListener('click', () => {
+    location.href = "paginaPrincipal.html"
+})
+
+botonUsuarios.addEventListener('click', () => {
+    location.href = "misUsuarios.html"
 })
 
 botonDebugear.addEventListener('click', () =>{

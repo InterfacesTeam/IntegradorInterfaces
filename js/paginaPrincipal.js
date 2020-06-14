@@ -16,5 +16,5 @@ botonSolicitudes.addEventListener('click', () => {
 })
 
 botonUsuarios.addEventListener('click', () => {
-    
+    location.href = "misUsuarios.html"
 })
