@@ -53,13 +53,13 @@ botonGuardar.addEventListener('click', () =>{
         }
 
         Lockr.rm('nuevo')
-        location.href = 'paginaPrincipal.html'
+        location.href = 'misSolicitudes.html'
     }
 })
 
 botonCancelar.addEventListener('click', () =>{
     Lockr.rm('nuevo')
-    location.href = 'paginaPrincipal.html'
+    location.href = 'misSolicitudes.html'
 })
 
 botonSalir.addEventListener('click', () => {

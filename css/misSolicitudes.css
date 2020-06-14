@@ -1,0 +1,138 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#cabezera{
+    margin: auto;
+    position: relative;
+}
+
+#cabezera{
+    border-bottom: 1px solid;
+    border-color: grey;
+    background-color: lightgray;
+    margin: auto;
+    position: relative;   
+}
+
+#imagenUnahur{
+    width: 400px; 
+    height: 100px;
+    margin-left: 1%;
+    align-self: center;
+    position: relative;
+}
+
+.botonesOpciones{
+    float: right;
+    margin-top: 1.5%;
+    margin-right: 1.5%;
+}
+
+.opciones{
+    color: black;
+}
+
+#opciones{
+    font-size: 20px;
+    text-align: center;
+    margin-left: 2%;
+    margin-top: 3%;
+    border-color: gray;
+    border: 1px solid; 
+    border-radius: 10px;   
+    position: absolute;
+    width: 15%;
+}
+
+#tituloOpciones{
+    margin-top: 2% ;
+}
+
+.botonesAccion{
+    font-size: 13px;
+    margin: 2% auto;
+    width: 95%;
+}
+
+#botonNuevaSolicitud{
+    margin-top: 0%;
+}
+
+#tablaSolicitudes{
+    margin: 3% auto;
+    width: 60%;
+    border-bottom: 1px solid;
+    border-color: lightgrey;
+}
+
+#columna1{
+    width: 62%;
+}
+
+#columna2{
+    width: 15%;
+}
+
+#columna3{
+    width: 15%;
+}
+
+#columna4{
+    width: 10%;
+}
+
+.checkBox{
+    height: 20px;
+    width: 20px;
+}
+
+#error{
+    display: none;
+    color: red;
+    width: 50%;
+    font-size: 15px;
+    margin: 1% 40%;
+}
+
+.imagenesSliders{
+    width: 600px;
+    height: 500px;
+}
+
+.slider{
+    width: 60%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider ul{
+    display: flex;
+    padding: 0;
+    width: 400%;
+
+    animation: cambio 15s infinite alternate linear;
+    
+}
+
+.slider li{
+    width: 100%;
+    list-style: none;
+}
+
+.slider img{
+    width: 100%;
+}
+
+@keyframes cambio {
+    0% { margin-left: 0;}
+    20% { margin-left: 0;}
+
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+}
