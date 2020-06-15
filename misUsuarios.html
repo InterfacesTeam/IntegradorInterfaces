@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis solicitudes</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/misSolicitudes.css">
     <link rel="stylesheet" href="css/misUsuarios.css">
+    <link rel="stylesheet" href="css/cabecera.css">
 </head>
 <body>
         
     <div>
-        <header id="cabezera">
+        <header id="cabecera">
             <img src="img/logo-reparg.png" id="imagenUnahur">
             <button type="button" class="btn btn-primary botonesOpciones" id="botonSalir">Cerrar sesión</button>
             <button type="button" class="botonesOpciones opciones btn btn-link" id ="botonPaginaPrincipal">Pagina principal</button>
@@ -23,18 +23,19 @@
         <p id="tituloOpciones">Acciones de usuarios</p>
         <button type="button" class="btn btn-primary botonesAccion" id="botonNuevoUsuario">Agregar Usuario</button>
         <button type="button" class="btn btn-secondary botonesAccion" id="botonEditar">Editar Usuario</button>
-        <button type="button" class="btn btn-danger botonesAccion" id="botonEliminar">Eliminar Usuario/s</button>
+        <button type="button" class="btn btn-danger botonesAccion" id="botonEliminar">Eliminar Usuario</button>
         <button type="button" class="btn btn-warning botonesAccion" id="botonDebugear">Debugear</button>
         
     </div>
     
     <div>
-        <table class="table table-striped" id="tablaSolicitudes">
+        <table class="table table-striped" id="tablaUsuarios">
             <thead>
                 <tr>
                     <th scope="col" id="columna1">Avatar</th>
                     <th scope="col" id="columna2">Nombre</th>
                     <th scope="col" id="columna3">Activo</th>
+                    <th scope="col" id="columna4">Acción</th>
                 </tr>
             </thead>
             <tbody>
