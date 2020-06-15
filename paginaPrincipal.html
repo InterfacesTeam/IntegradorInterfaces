@@ -3,47 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mis solicitudes</title>
+    <title>Pagina principal</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/paginaPrincipal.css">
 </head>
-<body onload='actualizarTablaSolicitudes()'>
-    
-</body>
-<div>
-    <header id="cabezera"> 
-        <img src="img/unahur.png" id="imagenUnahur">
-        <button type="button" class="btn btn-primary" id="botonSalir">Cerrar sesión</button>
-    </header>
-</div>
-
-    <div id="opciones">
-        <p id="tituloOpciones">Acciones de solicitudes</p>
-        <button type="button" class="btn btn-primary botonesAccion" id="botonNuevaSolicitud">Nueva solicitud</button>
-        <button type="button" class="btn btn-secondary botonesAccion" id="botonEditar">Editar solicitud</button>
-        <button type="button" class="btn btn-danger botonesAccion" id="botonEliminar">Eliminar solicitud/es</button>
-        <button type="button" class="btn btn-warning botonesAccion" id="botonDebugear">Debugear</button>
+<body>
+    <div>
+        <header id="cabezera">
+            <img src="img/logo-reparg.png" id="imagenUnahur">
+            <button type="button" class="btn btn-primary botonesOpciones" id="botonSalir">Cerrar sesión</button>
+            <button type="button" class="botonesOpciones opciones btn btn-link" id="botonSolicitudes">Mis solucitudes</button>
+            <button type="button" class="botonesOpciones opciones btn btn-link" id="botonUsuarios">Usuarios</button>
+        </header>
     </div>
 
+    <div id="mensajeBienvenida">
+        <h1>¡¡ HOLA !!</h1>
+        <h3>Bienvenido a la Universidad Nacional de Hurlingham.</h3>
+        <h3>En esta sección podes gestionar tus solicitudes y la de los usuarios de los mismos.</h3>
+        <h3>Muchas gracias por elegirnos. ¡Cualquier consulta no dudes en contarnos!</h3>
+    </div>
 
-    <table class="table table-striped" id="tablaSolicitudes">
-        <thead>
-            <tr>
-                <th scope="col" id="columna1">Descripción</th>
-                <th scope="col" id="columna2">Fecha de emisión</th>
-                <th scope="col" id="columna3">Estado</th>
-                <th scope="col" id="columna4">Acción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Aca van a ir las consultas-->
-        </tbody>
-    </table>    
-
-    <h4 id="error">No se puede seguir, por favor marque una solicitud</h4>
     
+    <div class ="slider">
+        <ul>
+            <li><img src="img/biblioteca.png" class="imagenesSliders" id="biblioteca"></li>
+            <li><img src="img/banner.jpg" class="imagenesSliders"></li>
+        </ul>
+    </div>
 
-    <script src="lockr.js" type="text/javascript"></script>
+    <div>
+        <a href="https://campus.unahur.edu.ar/mod/page/view.php?id=158048"><img src="img/publicidad 1.png" class="imagenesChicas"></a>
+        <a href="https://campus.unahur.edu.ar/mod/page/view.php?id=158049"><img src="img/publicidad 2.png" class="imagenesChicas"></a>
+        <a href="http://biblioteca.unahur.edu.ar/"><img src="img/publicidad 3.png" class="imagenesChicas"></a>
+    </div>
     <script src="js/paginaPrincipal.js"></script>
 </body>
 </html>

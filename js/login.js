@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Lockr.flush()
 
 Lockr.set(1 , {
@@ -22,9 +23,17 @@ Lockr.set(3 , {
 });
 
 function redireccionar(){
+=======
+var noPuedoIniciarSesion = document.getElementById("noPuedoIniciarSesion");
+var crearCuenta = document.getElementById("crearCuenta");
+var iniciarSesion = document.getElementById("iniciarSesion");
+
+iniciarSesion.addEventListener('click', () => {    
+>>>>>>> paginaPrincipal
     document.getElementById("carga").style.display="block";
     setTimeout('validarLogin()', 3000);
-}
+})
+
 
 
 function validarLogin(){
@@ -81,3 +90,10 @@ function between(n, a, b){
     return (n >= a) && (n <= b)
 }
 
+noPuedoIniciarSesion.addEventListener('click', () => {
+    alert('Todavia no está hecho')
+})
+
+crearCuenta.addEventListener('click', () => {
+    alert('Todavia no está hecho')
+})
