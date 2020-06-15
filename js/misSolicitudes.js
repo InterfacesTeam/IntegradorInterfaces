@@ -9,12 +9,11 @@ var botonUsuarios = document.getElementById("botonUsuarios");
 var botonPaginaPrincipal = document.getElementById("botonPaginaPrincipal");
 var error = document.getElementById("error");
 
-console.log("Hola")
 
 actualizarTablaSolicitudes()
 
 function actualizarTablaSolicitudes() {
-    var solicitudes = Lockr.getAll();
+    var solicitudes = Lockr.getAll().filter( usuario => usuario.ID <= 99);
 
     tbody = document.querySelector('#tablaSolicitudes tbody');
     tbody.innerHTML = '';
@@ -90,7 +89,11 @@ botonUsuarios.addEventListener('click', () => {
 })
 
 botonDebugear.addEventListener('click', () =>{
-    Lockr.flush()
+    const todasLasSolicitudes = Lockr.getAll().filter( usuario => usuario.ID <= 99)
+
+    for(var i = 0; i < todasLasSolicitudes.length; i++){
+        Lockr.rm(todasLasSolicitudes[i].ID)
+    }
 
     Lockr.set(1 , {
         "ID": 1,

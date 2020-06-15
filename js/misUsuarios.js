@@ -1,58 +1,114 @@
-var botonSalir = document.getElementById("botonSalir");
+//botones cabezera
 var botonSolicitudes = document.getElementById("botonSolicitudes");
-var botonNuevoUsuario = document.getElementById("botonNuevoUsuario");
 var botonPaginaPrincipal = document.getElementById("botonPaginaPrincipal");
+var botonSalir = document.getElementById("botonSalir");
 
-botonSalir.addEventListener('click', ()  => {
-    location.href="index.html"
-})
+var botonNuevoUsuario = document.getElementById("botonNuevoUsuario");
+var botonDebugear =  document.getElementById("botonDebugear");
+var botonEliminar = document.getElementById("botonEliminar");
+var todosLosCheckBox = document.getElementsByClassName("checkBox");
+
+
+
+console.log(Lockr.getAll())
+actualizarTablaUsuarios()
 
 botonSolicitudes.addEventListener('click', () => {
     location.href="misSolicitudes.html"
-})
-
-
-botonNuevoUsuario.addEventListener('click', () => {
-    location.href="nuevoUsuario.html"
 })
 
 botonPaginaPrincipal.addEventListener('click', () => {
     location.href="paginaPrincipal.html"
 })
 
-function actualizarTablaUsuarios() {
-    var solicitudes = [];
-    
-    for (i = 0; i < Lockr.length; i++) {
-        if(Lockr[i].id > 100) {
-            solicitudes.append(i);
-        }
-    } 
+botonSalir.addEventListener('click', ()  => {
+    location.href="index.html"
+})
 
-    tbody = document.querySelector('#tablaSolicitudes tbody');
+botonNuevoUsuario.addEventListener('click', () => {
+    Lockr.set('nuevo', {
+        "ID": 99
+    })
+    location.href="miUsuario.html"
+})
+
+botonEditar.addEventListener('click', () => {
+    if (IDCheckeado() == null) {
+        error.style.display = 'block'
+    }
+    else{
+        Lockr.set('nuevo', IDCheckeado())
+        location.href ="miUsuario.html";
+    }
+})
+
+botonEliminar.addEventListener('click', () => {
+    
+    if (IDCheckeado() == null) {
+        error.style.display = 'block'
+    }
+    else{
+        Lockr.rm(IDCheckeado())
+        actualizarTablaUsuarios()   
+    }
+})
+
+botonDebugear.addEventListener('click', () =>{
+    
+    const todosLosUsuarios = Lockr.getAll().filter( usuario => usuario.ID >= 100)
+
+    for(var i = 0; i < todosLosUsuarios.length; i++){
+        Lockr.rm(todosLosUsuarios[i].ID)
+    }
+
+    Lockr.set(100, {
+        "ID": 100,
+        "Fecha": "14/06/2020",
+        "Avatar":"https://avatars.dicebear.com/v2/identicon/fc229c9bcd50cda8d6b9ebc3def84bcd.svg",
+        "Nombre": "P4BL1SK1",
+        "Contraseña":"123789",
+        "Activo": "Activo"
+    });
+    
+    actualizarTablaUsuarios()
+});
+
+
+function actualizarTablaUsuarios() {
+    var usuarios = Lockr.getAll().filter(usuario => usuario.ID >= 100);
+    
+    tbody = document.querySelector('#tablaUsuarios tbody');
     tbody.innerHTML = '';
 
-    for(var i = 0; i < solicitudes.length; i++){
+    for(var i = 0; i < usuarios.length; i++){
+
+        var imagen = new Image()
+        imagen.src = usuarios[i].Avatar;
+        imagen.className = "avatar" 
+
         var fila = tbody.insertRow(i);
-        var celdaDescripcion = fila.insertCell(0),
-        celdaFecha = fila.insertCell(1),
-        celdaEstado = fila.insertCell(2),
+        var celdaAvatar = fila.insertCell(0),
+        celdaUsername = fila.insertCell(1),
+        celdaActivo = fila.insertCell(2),
         celdaCheckBox = fila.insertCell(3);
 
-        celdaDescripcion.innerHTML = solicitudes[i].Descripción;
-        celdaFecha.innerHTML = solicitudes[i].FechaSolicitud;
-        celdaEstado.innerHTML = solicitudes[i].Estado;
+
+        celdaAvatar.innerHTML = imagen.outerHTML;
+        celdaUsername.innerHTML = usuarios[i].Nombre;
+        celdaActivo.innerHTML = usuarios[i].Activo;
 
         var checkBox = document.createElement('input')
         checkBox.type ='radio';
-        checkBox.className = "checkBox",
+        checkBox.className = "checkBox info",
         checkBox.name = "boton";
-        checkBox.value = solicitudes[i].ID;
+        checkBox.value = usuarios[i].ID;
 
         celdaCheckBox.appendChild(checkBox);
         tbody.appendChild(fila);
     }
-}
+} 
+
+
 
 function IDCheckeado(){
     var IDCheckeado;

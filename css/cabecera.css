@@ -1,0 +1,25 @@
+#cabecera{
+    border-bottom: 1px solid;
+    border-color: grey;
+    background-color: lightgray;
+    margin: auto;
+    position: relative;   
+}
+
+#imagenUnahur{
+    width: 400px; 
+    height: 100px;
+    margin-left: 1%;
+    align-self: center;
+    position: relative;
+}
+
+.botonesOpciones{
+    float: right;
+    margin-top: 1.5%;
+    margin-right: 1.5%;
+}
+
+.opciones{
+    color: black;
+}

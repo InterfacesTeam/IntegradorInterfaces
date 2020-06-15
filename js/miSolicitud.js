@@ -1,7 +1,9 @@
 var botonGuardar = document.getElementById("botonGuardar");
 var botonCancelar = document.getElementById("botonCancelar");
-var nuevaDescripción = document.getElementById("inputEdicion")
-var idSolicitudVieja = Lockr.get('nuevo')
+var botonPaginaPrincipal = document.getElementById("botonPaginaPrincipal");
+var botonSolicitudes = document.getElementById("botonSolicitudes");
+var nuevaDescripción = document.getElementById("inputEdicion");
+var idSolicitudVieja = Lockr.get('nuevo');
 
 
 function agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado){
@@ -63,9 +65,19 @@ botonCancelar.addEventListener('click', () =>{
 })
 
 botonSalir.addEventListener('click', () => {
+    Lockr.rm('nuevo')
     location.href="index.html"
 })
 
+botonPaginaPrincipal.addEventListener('click', () => {
+    Lockr.rm('nuevo')
+    location.href = "paginaPrincipal.html"
+})
+
+botonSolicitudes.addEventListener('click', () => {
+    Lockr.rm('nuevo')
+    location.href = "misSolicitudes.html"
+})
 
 if(idSolicitudVieja == null){
     nuevaDescripción.placeholder="Descripción de la solicitud"
