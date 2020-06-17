@@ -11,7 +11,7 @@ var todosLosCheckBox = document.getElementsByClassName("checkBox");
 
 
 console.log(Lockr.getAll())
-actualizarTablaUsuarios()
+
 
 botonSolicitudes.addEventListener('click', () => {
     location.href="misSolicitudes.html"
@@ -74,7 +74,7 @@ botonDebugear.addEventListener('click', () =>{
         "ID": 101,
         "Fecha": "01/03/2019",
         "Avatar":"https://avatars.dicebear.com/api/identicon/zxcvbn34.svg",
-        "Nombre": "42312863",
+        "Nombre": "42435380",
         "Contraseña":"zxcvbn34",
         "Activo": "Activo"
     });
@@ -128,3 +128,5 @@ function IDCheckeado(){
     }
     return IDCheckeado
 }
+
+actualizarTablaUsuarios();
