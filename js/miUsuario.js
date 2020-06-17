@@ -5,7 +5,8 @@ var botonCancelar = document.getElementById("botonCancelar");
 var botonSalir = document.getElementById("botonSalir");
 var botonPaginaPrincipal = document.getElementById("botonPaginaPrincipal");
 var botonUsuarios = document.getElementById("botonUsuarios");
-var error = document.getElementById("error");
+var ningunDato = document.getElementById("ningunDato");
+var datosErroneos = document.getElementById("datosErroneos");
 var idUsuarioViejo = Lockr.get('nuevo')
 var cantidadDeUsuarios = Lockr.getAll().filter( usuario => usuario.ID >= 100).length;
 
@@ -13,34 +14,11 @@ var cantidadDeUsuarios = Lockr.getAll().filter( usuario => usuario.ID >= 100).le
 
 botonGuardar.addEventListener('click', () => {
 
-    if(nombre.value == "" || contraseña.value == ""){
-        error.style.display = 'block'
-    }
-    else{
-        if(idUsuarioViejo.ID == 99){
-            crearUsuario()
-        }
-        else{
-            var usuarioViejo = Lockr.get(idUsuarioViejo)
+    ningunDato.style.display = 'none'
+    datosErroneos.style.display = 'none'
 
-            var fechaVieja = usuarioViejo.Fecha,
-            activoViejo = usuarioViejo.Activo,
-            avatarViejo = usuarioViejo.Avatar,
-            nuevoNombre = nombre.value,
-            nuevaContraseña = contraseña.value;
-               
-            Lockr.set(idUsuarioViejo, {
-                "ID": idUsuarioViejo,
-                "Fecha": fechaVieja,
-                "Avatar": avatarViejo,
-                "Nombre": nuevoNombre,
-                "Cotraseña": nuevaContraseña,
-                "Activo": activoViejo
-            })
-        }
-        Lockr.rm('nuevo')
-        location.href= "misUsuarios.html"
-    }
+    setTimeout('validarIngresoDeDatos()', 1000);
+
 });
 
 botonCancelar.addEventListener('click', () => {
@@ -85,9 +63,7 @@ function crearUsuario(){
     
 }
 
-if(idUsuarioViejo.ID){
 
-}
 
 if(idUsuarioViejo.ID == 99){
     nombre.placeholder = "Ingrese el nombre"
@@ -97,3 +73,82 @@ else{
 }
 
 contraseña.placeholder = "Ingrese la contaseña"
+
+
+
+function validarIngresoDeDatos(){
+    
+    if(nombre.value == "" || contraseña.value == ""){
+        ningunDato.style.display = 'block'
+    }
+
+    else if(! validarUsuario(nombre.value) && ! validarContraseña(contraseña.value)){
+        datosErroneos.style.display = 'block'
+    }
+    else{
+        if(idUsuarioViejo.ID == 99){
+            crearUsuario()
+        }
+        else{
+            var usuarioViejo = Lockr.get(idUsuarioViejo)
+
+            var fechaVieja = usuarioViejo.Fecha,
+            activoViejo = usuarioViejo.Activo,
+            avatarViejo = usuarioViejo.Avatar,
+            nuevoNombre = nombre.value,
+            nuevaContraseña = contraseña.value;
+               
+            Lockr.set(idUsuarioViejo, {
+                "ID": idUsuarioViejo,
+                "Fecha": fechaVieja,
+                "Avatar": avatarViejo,
+                "Nombre": nuevoNombre,
+                "Cotraseña": nuevaContraseña,
+                "Activo": activoViejo
+            })
+        }
+        Lockr.rm('nuevo')
+        location.href= "misUsuarios.html"
+    }
+}
+
+
+
+
+
+function validarUsuario(usuario){
+    return /^\d{8}$/.test(usuario)
+}
+
+function validarContraseña(contraseñaUsuario){
+    tieneLetra = false
+    tieneNumero = false
+    caracterIncorrecto = false
+
+    if(contraseñaUsuario.length >= 6){
+        for(var i = 0;i<contraseñaUsuario.length;i++){
+
+            valorIndividual = contraseñaUsuario.charCodeAt(i)
+            
+            if(between(valorIndividual, 65, 90) || between(valorIndividual,97,122)){
+                tieneLetra = true;   
+            }
+            else if(between(valorIndividual,48, 57))
+			{
+				tieneNumero = true;
+            }
+            else{
+                tieneAlgoMal = true;
+            }
+
+        }
+
+    }
+    return ! caracterIncorrecto && tieneLetra && tieneNumero
+
+}
+
+
+function between(n, a, b){
+    return (n >= a) && (n <= b)
+}

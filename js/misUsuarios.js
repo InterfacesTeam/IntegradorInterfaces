@@ -64,9 +64,18 @@ botonDebugear.addEventListener('click', () =>{
     Lockr.set(100, {
         "ID": 100,
         "Fecha": "14/06/2020",
-        "Avatar":"https://avatars.dicebear.com/v2/identicon/fc229c9bcd50cda8d6b9ebc3def84bcd.svg",
-        "Nombre": "P4BL1SK1",
-        "Contraseña":"123789",
+        "Avatar":"https://avatars.dicebear.com/v2/identicon/41666728asdqwe12.svg",
+        "Nombre": "41666728",
+        "Contraseña":"asdqwe12",
+        "Activo": "Activo"
+    });
+
+    Lockr.set(101, {
+        "ID": 101,
+        "Fecha": "01/03/2019",
+        "Avatar":"https://avatars.dicebear.com/api/identicon/zxcvbn34.svg",
+        "Nombre": "42312863",
+        "Contraseña":"zxcvbn34",
         "Activo": "Activo"
     });
     
