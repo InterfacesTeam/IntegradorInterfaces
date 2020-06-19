@@ -13,7 +13,7 @@ var error = document.getElementById("error");
 actualizarTablaSolicitudes()
 
 function actualizarTablaSolicitudes() {
-    var solicitudes = Lockr.getAll().filter( usuario => usuario.ID <= 99);
+    var solicitudes = Lockr.get('solicitudes');
 
     tbody = document.querySelector('#tablaSolicitudes tbody');
     tbody.innerHTML = '';
@@ -71,8 +71,13 @@ botonEliminar.addEventListener('click', () => {
         error.style.display = 'block'
     }
     else{
-        Lockr.rm(IDCheckeado())
+        const listaDeSolicitudes = Lockr.get('solicitudes');
+        const nuevaLista = listaDeSolicitudes.filter( solicitud => solicitud.ID != IDCheckeado())
+        Lockr.set('solicitudes', nuevaLista)
+
         actualizarTablaSolicitudes()   
+        console.log(nuevaLista)
+       
     }
 })
 
@@ -89,32 +94,24 @@ botonUsuarios.addEventListener('click', () => {
 })
 
 botonDebugear.addEventListener('click', () =>{
-    const todasLasSolicitudes = Lockr.getAll().filter( usuario => usuario.ID <= 99)
-
-    for(var i = 0; i < todasLasSolicitudes.length; i++){
-        Lockr.rm(todasLasSolicitudes[i].ID)
-    }
-
-    Lockr.set(1 , {
-        "ID": 1,
-        "Descripción": "Pedido de notebook",
-        "Estado": "Abierta",
-        "FechaSolicitud": "30/03/2020"
-    });
-
-    Lockr.set(2 , {
-        "ID": 2,
-        "Descripción": "Cambio de horario",
-        "Estado": "En progreso",
-        "FechaSolicitud": "03/04/2020"
-    });
-
-    Lockr.set(3 , {
-        "ID": 3,
-        "Descripción": "Pedido de una bicicleta para llegar a la universidad",
-        "Estado": "Cerrada",
-        "FechaSolicitud": "12/05/2020"
-    });
+   
+   Lockr.set('solicitudes', [{
+            "ID": 1,
+            "Descripción": "Pedido de notebook",
+            "Estado": "Abierta",
+            "FechaSolicitud": "30/03/2020"
+        },{
+            "ID": 2,
+            "Descripción": "Cambio de horario",
+            "Estado": "En progreso",
+            "FechaSolicitud": "03/04/2020"
+        },{
+            "ID": 3,
+            "Descripción": "Pedido de una bicicleta para llegar a la universidad",
+            "Estado": "Cerrada",
+            "FechaSolicitud": "12/05/2020"
+        }
+    ])
 
     actualizarTablaSolicitudes()
 

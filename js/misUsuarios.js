@@ -55,36 +55,29 @@ botonEliminar.addEventListener('click', () => {
 
 botonDebugear.addEventListener('click', () =>{
     
-    const todosLosUsuarios = Lockr.getAll().filter( usuario => usuario.ID >= 100)
-
-    for(var i = 0; i < todosLosUsuarios.length; i++){
-        Lockr.rm(todosLosUsuarios[i].ID)
-    }
-
-    Lockr.set(100, {
+    Lockr.set('usuarios', [{
         "ID": 100,
         "Fecha": "14/06/2020",
         "Avatar":"https://avatars.dicebear.com/v2/identicon/41666728asdqwe12.svg",
         "Nombre": "41666728",
         "Contraseña":"asdqwe12",
         "Activo": "Activo"
-    });
-
-    Lockr.set(101, {
+    },{
+        
         "ID": 101,
         "Fecha": "01/03/2019",
         "Avatar":"https://avatars.dicebear.com/api/identicon/zxcvbn34.svg",
         "Nombre": "42435380",
         "Contraseña":"zxcvbn34",
         "Activo": "Activo"
-    });
+    }])
     
     actualizarTablaUsuarios()
 });
 
 
 function actualizarTablaUsuarios() {
-    var usuarios = Lockr.getAll().filter(usuario => usuario.ID >= 100);
+    var usuarios = Lockr.get('usuarios')
     
     tbody = document.querySelector('#tablaUsuarios tbody');
     tbody.innerHTML = '';

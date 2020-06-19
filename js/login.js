@@ -1,72 +1,59 @@
 var noPuedoIniciarSesion = document.getElementById("noPuedoIniciarSesion");
 var crearCuenta = document.getElementById("crearCuenta");
 var iniciarSesion = document.getElementById("iniciarSesion");
+var login = document.getElementById("login");
+var register = document.getElementById("register");
+
+var errorIngresoUsuario = document.getElementById("errorIngresoUsuario");
+var errorContraseña = document.getElementById("errorContraseña");
+
 
 iniciarSesion.addEventListener('click', () => {    
-    document.getElementById("carga").style.display="block";
+
+    errorContraseña.style.display = "none"
+    errorIngresoUsuario.style.display = "none"
+    document.getElementById("rueditaLogin").style.display="block";
     setTimeout('validarLogin()', 3000);
 })
 
 
 
 function validarLogin(){
-    numeroUsuario = document.getElementById("usuario").value;
-    contraseñaUsuario = document.getElementById("contraseña").value
+    numeroUsuario = document.getElementById("usuarioLogin").value;
+    contraseñaUsuario = document.getElementById("contraseñaLogin").value
 
+    document.getElementById("rueditaLogin").style.display="none";
 
-    if(validarUsuario(numeroUsuario) && validarContraseña(contraseñaUsuario)){
-        location.href="paginaPrincipal.html"
-
+    if(! comprobarUsuarioSiExiste(numeroUsuario)){
+        errorIngresoUsuario.style.display = "block"
     }
+
+    else if(! comprobarContraseña(numeroUsuario, contraseñaUsuario)){
+        errorContraseña.style.display = "block"
+    }
+
     else{
-        document.getElementById("error").style.display = "block"
-        document.getElementById("carga").style.display="none";
+        location.href = "paginaPrincipal.html"
     }
 }
 
-
-
-function validarUsuario(usuario){
-    return /^\d{8}$/.test(usuario)
-}
-
-function validarContraseña(contraseñaUsuario){
-    tieneLetra = false
-    tieneNumero = false
-    caracterIncorrecto = false
-
-    if(contraseñaUsuario.length >= 6){
-        for(var i = 0;i<contraseñaUsuario.length;i++){
-
-            valorIndividual = contraseñaUsuario.charCodeAt(i)
-            
-            if(between(valorIndividual, 65, 90) || between(valorIndividual,97,122)){
-                tieneLetra = true;   
-            }
-            else if(between(valorIndividual,48, 57))
-			{
-				tieneNumero = true;
-            }
-            else{
-                tieneAlgoMal = true;
-            }
-
-        }
-
-    }
-    return ! caracterIncorrecto && tieneLetra && tieneNumero
-
-}
-
-
-function between(n, a, b){
-    return (n >= a) && (n <= b)
-}
 
 noPuedoIniciarSesion.addEventListener('click', () => {
     alert('Todavia no está hecho')
 })
 
 crearCuenta.addEventListener('click', () => {
-    alert('Todavia no está hecho')
+    setTimeout( () => {
+        login.style.display = "none"
+        register.style.display = "block"
+    }, 1000)
 })
+
+
+function comprobarContraseña(usuario, contraseña){
+    const listaDeUsuarios = Lockr.get('usuariosRegistrados');
+    const usuarioRegistrado = listaDeUsuarios.find( usuarioRegistrado => usuarioRegistrado.DNI == usuario) 
+    
+    return usuarioRegistrado.Contraseña == contraseña
+    
+}

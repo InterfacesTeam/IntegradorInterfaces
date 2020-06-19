@@ -6,33 +6,58 @@
     <title>Login</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
-<body background="img/genteEstudiando3.jpg">
-    <!-- <img src="img/genteEstudiando1.jpg" class="imagenesFondo" id="imagenFondo1">
-    <img src="img/genteEstudiando2.jpeg" class="imagenesFondo" id="imagenFondo2">
-    <img src="img/genteEstudiando3.jpg" class="imagenesFondo" id="imagenFondo3">
-    <img src="img/genteEstudiando4.jpg" class="imagenesFondo" id="imagenFondo4">
-    <img src="img/genteEstudiando5.jpg" class="imagenesFondo" id="imagenFondo5">
-    <img src="img/genteEstudiando6.jpeg" class="imagenesFondo" id="imagenFondo6"> -->
+<body background="img/genteEstudiando3.jpg" onload='cargarDatosLockr()'>
 
-    <div id="loginRegister" align= "center">
+    <div class="loginRegister" align= "center" id="login">
 
         <img src="img/unahur.png" id="imagenUnahur">
         <form>
             
-            <input type="text" class ="userpass botones" placeholder="Usuario" id="usuario"> 
+            <input type="text" class ="userpass botones" placeholder="Usuario" id="usuarioLogin"> 
             <br>
-            <input type="password" class ="userpass botones" placeholder="Contraseña" id="contraseña">
-            <h4 id="error">No se ha podido iniciar sesion. Revise si puso los datos correctamente</h4>
+            <input type="password" class ="userpass botones" placeholder="Contraseña" id="contraseñaLogin">
+        
             <br>
-            <button type="button" class="login botones" id="iniciarSesion">INICIAR SESIÓN</button>
-            <p class="textoLogin" id="noPuedoIniciarSesion">¿NO PUEDE INICIAR SESIÓN?</p>
-            <p class="textoLogin" id="crearCuenta">CREAR CUENTA</p>
+            <button type="button" class="botones botonesInicioRegister" id="iniciarSesion">INICIAR SESIÓN</button>
+            <br>
+            <button type="button" class="botonesLogin" id="noPuedoIniciarSesion">¿NO PUEDE INICIAR SESIÓN?</p>
+            
+            <button type="button" class="botonesLogin" id="crearCuenta">CREAR CUENTA</p>
 
-            <div id="carga"></div>
+            <h4 class="erroresPosibles" id="errorIngresoUsuario">Usuario incorrecto</h4>
+            <h4 class="erroresPosibles" id="errorContraseña">Contraseña incorrecta</h4>
+            <div class="carga" id="rueditaLogin"></div>
+            
+        </form>
+    </div>
+
+    <div class="loginRegister" align= "center" id="register">
+
+        <img src="img/unahur.png" id="imagenUnahur">
+        <form>
+            
+            <input type="text" class ="userpass botones" placeholder="Usuario" id="usuarioRegistro"> 
+            <br>
+            <input type="password" class ="userpass botones" placeholder="Contraseña" id="contraseñaRegistro">
+            <br>
+            <input type="password" class ="userpass botones" placeholder="Confirma contraseña" id="confirmacionContraseña">
+            <br>
+            <button type="button" class="login botones botonesInicioRegister" id="botonRegistro">REGISTRATE</button>
+
+            <h4 class="erroresPosibles" id="errorContraseñasDistintas">Las contraseñas no coinciden</h4>
+            <h4 class="erroresPosibles" id="errorIngresarDatos">Los datos que ingresó son erroneos</h4>
+            <h4 class="erroresPosibles" id="errorNoIngresaNada">No ingresó ningun datos</h4>
+            <h4 class="erroresPosibles" id="errorUsuarioExistente">El usuario ya existe</h4>
+            
+            
+
+            <div class="carga" id="rueditaRegistro"></div>
             
         </form>
     </div>
     <script src="js/lockr.js" type="text/javascript"></script>
     <script src="js/login.js"></script>
+    <script src="js/register.js"></script>
+    <script src="js/llenarDatosLockr.js"></script>
 </body>
 </html>

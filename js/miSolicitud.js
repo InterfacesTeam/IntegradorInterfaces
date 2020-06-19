@@ -5,17 +5,20 @@ var botonSolicitudes = document.getElementById("botonSolicitudes");
 var nuevaDescripción = document.getElementById("inputEdicion");
 var idSolicitudVieja = Lockr.get('nuevo');
 
+const listaDeSolicitudes = Lockr.get('solicitudes');
+
 
 function agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado){
-    var numeroIDyValueLockr = Lockr.getAll().length + 1;
-    var nuevaSolicitud = {
-        ID: numeroIDyValueLockr,
+    var numeroID = listaDeSolicitudes.length + 1;
+    
+    listaDeSolicitudes.push({
+        ID: numeroID,
         Descripción: nuevaDescripción,
         FechaSolicitud: nuevaFecha,
         Estado: nuevoEstado
-    }
+    });
 
-    Lockr.set(numeroIDyValueLockr,nuevaSolicitud);
+    Lockr.set('solicitudes', listaDeSolicitudes)
 }
 
 function llenarSolicitud(){
@@ -38,19 +41,23 @@ botonGuardar.addEventListener('click', () =>{
         }
         else{
                 
-            var solicitudVieja = Lockr.get(idSolicitudVieja)        
+            var solicitudVieja = buscarSolicitud(idSolicitudVieja)        
             var fechaSolicitudVieja = solicitudVieja.FechaSolicitud,
             estadoSolicitudVieja = solicitudVieja.Estado
             descripcionSolicitudNueva = nuevaDescripción.value;
             
+            const nuevaLista = listaDeSolicitudes.filter(solicitud => solicitud.ID != idSolicitudVieja)
+            console.log(nuevaLista)
             
-            Lockr.set(idSolicitudVieja, {
-                "ID": idSolicitudVieja,
+
+            nuevaLista.push({
+                "ID": parseInt(idSolicitudVieja), 
                 "Descripción": descripcionSolicitudNueva,
                 "Estado": estadoSolicitudVieja,
                 "FechaSolicitud": fechaSolicitudVieja
             })
-        
+            
+            Lockr.set('solicitudes', nuevaLista)
             
         }
 
@@ -83,5 +90,10 @@ if(idSolicitudVieja == null){
     nuevaDescripción.placeholder="Descripción de la solicitud"
 }
 else{
-    nuevaDescripción.placeholder = Lockr.get(idSolicitudVieja).Descripción
+    nuevaDescripción.value = buscarSolicitud(idSolicitudVieja).Descripción
+}
+
+
+function buscarSolicitud(id){
+    return listaDeSolicitudes.find( solicitudVieja => solicitudVieja.ID == id)
 }
