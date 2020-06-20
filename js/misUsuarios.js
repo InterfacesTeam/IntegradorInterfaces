@@ -10,9 +10,6 @@ var todosLosCheckBox = document.getElementsByClassName("checkBox");
 
 
 
-console.log(Lockr.getAll())
-
-
 botonSolicitudes.addEventListener('click', () => {
     location.href="misSolicitudes.html"
 })
@@ -37,7 +34,7 @@ botonEditar.addEventListener('click', () => {
         error.style.display = 'block'
     }
     else{
-        Lockr.set('nuevo', IDCheckeado())
+        Lockr.set('nuevo', { "ID": IDCheckeado() })
         location.href ="miUsuario.html";
     }
 })
@@ -48,7 +45,10 @@ botonEliminar.addEventListener('click', () => {
         error.style.display = 'block'
     }
     else{
-        Lockr.rm(IDCheckeado())
+        const listaDeUsuarios = Lockr.get('usuarios');
+        const nuevaLista = listaDeUsuarios.filter( usuario => usuario.ID != IDCheckeado())
+        Lockr.set('usuarios', nuevaLista)
+
         actualizarTablaUsuarios()   
     }
 })
@@ -56,7 +56,7 @@ botonEliminar.addEventListener('click', () => {
 botonDebugear.addEventListener('click', () =>{
     
     Lockr.set('usuarios', [{
-        "ID": 100,
+        "ID": 1,
         "Fecha": "14/06/2020",
         "Avatar":"https://avatars.dicebear.com/v2/identicon/41666728asdqwe12.svg",
         "Nombre": "41666728",
@@ -64,7 +64,7 @@ botonDebugear.addEventListener('click', () =>{
         "Activo": "Activo"
     },{
         
-        "ID": 101,
+        "ID": 2,
         "Fecha": "01/03/2019",
         "Avatar":"https://avatars.dicebear.com/api/identicon/zxcvbn34.svg",
         "Nombre": "42435380",

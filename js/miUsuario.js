@@ -7,10 +7,9 @@ var botonPaginaPrincipal = document.getElementById("botonPaginaPrincipal");
 var botonUsuarios = document.getElementById("botonUsuarios");
 var ningunDato = document.getElementById("ningunDato");
 var datosErroneos = document.getElementById("datosErroneos");
-var idUsuarioViejo = Lockr.get('nuevo')
-var cantidadDeUsuarios = Lockr.getAll().filter( usuario => usuario.ID >= 100).length;
+var idUsuarioViejo = Lockr.get('nuevo').ID
 
-
+const listaDeUsuarios = Lockr.get('usuarios');
 
 botonGuardar.addEventListener('click', () => {
 
@@ -44,32 +43,35 @@ botonUsuarios.addEventListener('click', () => {
 function crearUsuario(){
     var f = new Date();
     var nuevaFecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()),
-    nuevaID = cantidadDeUsuarios + 100,
+    nuevaID = listaDeUsuarios.length + 1,
     nuevoNombre = nombre.value,
     nuevaContraseña = contraseña.value,
-    nuevoAvatar =  "https://avatars.dicebear.com/api/identicon/" + nombre.value + nuevaID + ".svg";
+    nuevoAvatar =  "https://avatars.dicebear.com/api/identicon/" + nuevoNombre + nuevaID + ".svg";
+    
 
-    nuevoUsuario = {
+    listaDeUsuarios.push({
         "ID": nuevaID,
         "Fecha": nuevaFecha,
         "Avatar": nuevoAvatar,
         "Nombre": nuevoNombre,
         "Contraseña": nuevaContraseña,
         "Activo": "Activo"
-    }
-
-    Lockr.set(nuevaID, nuevoUsuario);
+    })
+    
+    Lockr.set('usuarios', listaDeUsuarios)
+    
+    
 
     
 }
 
 
 
-if(idUsuarioViejo.ID == 99){
+if(idUsuarioViejo == 99){
     nombre.placeholder = "Ingrese el nombre"
 }
 else{
-    nombre.placeholder = Lockr.get(idUsuarioViejo).Nombre
+    nombre.value = buscarSolicitud(idUsuarioViejo).Nombre
 }
 
 contraseña.placeholder = "Ingrese la contaseña"
@@ -82,23 +84,25 @@ function validarIngresoDeDatos(){
         ningunDato.style.display = 'block'
     }
 
-    else if(! validarUsuario(nombre.value) && ! validarContraseña(contraseña.value)){
+    else if(! validarUsuario(nombre.value) || ! validarContraseña(contraseña.value)){
         datosErroneos.style.display = 'block'
     }
     else{
-        if(idUsuarioViejo.ID == 99){
+        if(idUsuarioViejo == 99){
             crearUsuario()
         }
         else{
-            var usuarioViejo = Lockr.get(idUsuarioViejo)
+            var usuarioViejo = buscarSolicitud(idUsuarioViejo)
 
             var fechaVieja = usuarioViejo.Fecha,
             activoViejo = usuarioViejo.Activo,
             avatarViejo = usuarioViejo.Avatar,
             nuevoNombre = nombre.value,
             nuevaContraseña = contraseña.value;
-               
-            Lockr.set(idUsuarioViejo, {
+            
+            const nuevaLista = listaDeUsuarios.filter(usuario => usuario.ID != idUsuarioViejo)
+
+            nuevaLista.push({
                 "ID": idUsuarioViejo,
                 "Fecha": fechaVieja,
                 "Avatar": avatarViejo,
@@ -106,6 +110,8 @@ function validarIngresoDeDatos(){
                 "Cotraseña": nuevaContraseña,
                 "Activo": activoViejo
             })
+
+            Lockr.set('usuarios', nuevaLista)
         }
         Lockr.rm('nuevo')
         location.href= "misUsuarios.html"
@@ -151,4 +157,8 @@ function validarContraseña(contraseñaUsuario){
 
 function between(n, a, b){
     return (n >= a) && (n <= b)
+}
+
+function buscarSolicitud(id){
+    return listaDeUsuarios.find( usuarioViejo => usuarioViejo.ID == id)
 }

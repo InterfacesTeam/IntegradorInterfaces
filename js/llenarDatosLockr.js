@@ -24,7 +24,7 @@ function cargarDatosLockr(){
         }])
         
         Lockr.set('usuarios', [{
-            "ID": 100,
+            "ID": 1,
             "Fecha": "14/06/2020",
             "Avatar":"https://avatars.dicebear.com/v2/identicon/41666728asdqwe12.svg",
             "Nombre": "41666728",
@@ -32,7 +32,7 @@ function cargarDatosLockr(){
             "Activo": "Activo"
         },{
             
-            "ID": 101,
+            "ID": 2,
             "Fecha": "01/03/2019",
             "Avatar":"https://avatars.dicebear.com/api/identicon/zxcvbn34.svg",
             "Nombre": "42435380",

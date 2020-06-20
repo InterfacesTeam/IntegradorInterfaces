@@ -47,8 +47,6 @@ botonGuardar.addEventListener('click', () =>{
             descripcionSolicitudNueva = nuevaDescripción.value;
             
             const nuevaLista = listaDeSolicitudes.filter(solicitud => solicitud.ID != idSolicitudVieja)
-            console.log(nuevaLista)
-            
 
             nuevaLista.push({
                 "ID": parseInt(idSolicitudVieja), 
