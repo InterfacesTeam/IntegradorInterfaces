@@ -22,6 +22,8 @@ function validarLogin(){
 
     document.getElementById("rueditaLogin").style.display="none";
 
+    console.log(numeroUsuario)
+
     if(! comprobarUsuarioSiExiste(numeroUsuario)){
         errorIngresoUsuario.style.display = "block"
     }
