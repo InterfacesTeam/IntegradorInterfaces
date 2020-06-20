@@ -16,8 +16,6 @@ iniciarSesion.addEventListener('click', () => {
     setTimeout('validarLogin()', 3000);
 })
 
-
-
 function validarLogin(){
     numeroUsuario = document.getElementById("usuarioLogin").value;
     contraseñaUsuario = document.getElementById("contraseñaLogin").value
