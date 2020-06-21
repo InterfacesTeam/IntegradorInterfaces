@@ -61,7 +61,7 @@ botonEditar.addEventListener('click', () => {
         error.style.display = 'block'
     }
     else{
-        Lockr.set('nuevo', IDCheckeado())
+        Lockr.set('nuevo', parseInt(IDCheckeado()))
         location.href ="miSolicitud.html";
     }
 })
