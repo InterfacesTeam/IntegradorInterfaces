@@ -9,7 +9,7 @@ var ningunDato = document.getElementById("ningunDato");
 var datosErroneos = document.getElementById("datosErroneos");
 var idUsuarioViejo = Lockr.get('nuevo').ID
 
-const listaDeUsuarios = Lockr.get('usuarios');
+var listaDeUsuarios = Lockr.get('usuarios');
 
 botonGuardar.addEventListener('click', () => {
 
@@ -17,7 +17,6 @@ botonGuardar.addEventListener('click', () => {
     datosErroneos.style.display = 'none'
 
     setTimeout('validarIngresoDeDatos()', 1000);
-
 });
 
 botonCancelar.addEventListener('click', () => {
@@ -40,42 +39,20 @@ botonUsuarios.addEventListener('click', () => {
     location.href = "misUsuarios.html"
 })
 
-function crearUsuario(){
-    var f = new Date();
-    var nuevaFecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()),
-    nuevaID = listaDeUsuarios.length + 1,
-    nuevoNombre = nombre.value,
-    nuevaContraseña = contraseña.value,
-    nuevoAvatar =  "https://avatars.dicebear.com/api/identicon/" + nuevoNombre + nuevaID + ".svg";
-    
-
+function crearUsuario(nuevaID, nuevaFecha, nuevoAvatar, nuevoNombre,nuevaContraseña ,nuevoActivo ){
+   
     listaDeUsuarios.push({
         "ID": nuevaID,
         "Fecha": nuevaFecha,
         "Avatar": nuevoAvatar,
         "Nombre": nuevoNombre,
         "Contraseña": nuevaContraseña,
-        "Activo": "Activo"
+        "Activo": nuevoActivo
     })
     
     Lockr.set('usuarios', listaDeUsuarios)
     
-    
-
-    
 }
-
-
-
-if(idUsuarioViejo == 99){
-    nombre.placeholder = "Ingrese el nombre"
-}
-else{
-    nombre.value = buscarSolicitud(idUsuarioViejo).Nombre
-}
-
-contraseña.placeholder = "Ingrese la contaseña"
-
 
 
 function validarIngresoDeDatos(){
@@ -89,37 +66,26 @@ function validarIngresoDeDatos(){
     }
     else{
         if(idUsuarioViejo == 99){
-            crearUsuario()
+
+            var f = new Date();
+            var nuevaFecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear()),
+            nuevaID = listaDeUsuarios.length + 1,
+            nuevoAvatar =  "https://avatars.dicebear.com/api/identicon/" + nombre.value + nuevaID + ".svg";
+
+            crearUsuario(nuevaID, nuevaFecha, nuevoAvatar, nombre.value, contraseña.value, "Activo")
         }
         else{
             var usuarioViejo = buscarSolicitud(idUsuarioViejo)
-
-            var fechaVieja = usuarioViejo.Fecha,
-            activoViejo = usuarioViejo.Activo,
-            avatarViejo = usuarioViejo.Avatar,
-            nuevoNombre = nombre.value,
-            nuevaContraseña = contraseña.value;
             
-            const nuevaLista = listaDeUsuarios.filter(usuario => usuario.ID != idUsuarioViejo)
+            listaDeUsuarios = listaDeUsuarios.filter(usuario => usuario.ID != idUsuarioViejo)
 
-            nuevaLista.push({
-                "ID": idUsuarioViejo,
-                "Fecha": fechaVieja,
-                "Avatar": avatarViejo,
-                "Nombre": nuevoNombre,
-                "Cotraseña": nuevaContraseña,
-                "Activo": activoViejo
-            })
+            crearUsuario(idUsuarioViejo, usuarioViejo.Fecha, usuarioViejo.Avatar, nombre.value, contraseña.value, usuarioViejo.Activo)
 
-            Lockr.set('usuarios', nuevaLista)
         }
         Lockr.rm('nuevo')
         location.href= "misUsuarios.html"
     }
 }
-
-
-
 
 
 function validarUsuario(usuario){
@@ -162,3 +128,13 @@ function between(n, a, b){
 function buscarSolicitud(id){
     return listaDeUsuarios.find( usuarioViejo => usuarioViejo.ID == id)
 }
+
+if(idUsuarioViejo == 99){
+    nombre.placeholder = "Ingrese el nombre"
+}
+else{
+    nombre.value = buscarSolicitud(idUsuarioViejo).Nombre
+}
+
+contraseña.placeholder = "Ingrese la contaseña"
+

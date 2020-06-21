@@ -5,29 +5,7 @@ var botonSolicitudes = document.getElementById("botonSolicitudes");
 var nuevaDescripción = document.getElementById("inputEdicion");
 var idSolicitudVieja = Lockr.get('nuevo');
 
-const listaDeSolicitudes = Lockr.get('solicitudes');
-
-
-function agregarSolicitud(nuevaDescripción, nuevaFecha, nuevoEstado){
-    var numeroID = listaDeSolicitudes.length + 1;
-    
-    listaDeSolicitudes.push({
-        ID: numeroID,
-        Descripción: nuevaDescripción,
-        FechaSolicitud: nuevaFecha,
-        Estado: nuevoEstado
-    });
-
-    Lockr.set('solicitudes', listaDeSolicitudes)
-}
-
-function llenarSolicitud(){
-    var f = new Date();
-    nuevaFecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-    nuevoEstado = "Abierto"
-
-    agregarSolicitud(nuevaDescripción.value, nuevaFecha, nuevoEstado);
-}
+var listaDeSolicitudes = Lockr.get('solicitudes');
 
 botonGuardar.addEventListener('click', () =>{
     
@@ -37,26 +15,18 @@ botonGuardar.addEventListener('click', () =>{
     else{
 
         if(idSolicitudVieja == null){
-            llenarSolicitud()
+            var f = new Date();
+            nuevaFecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+            nuevoEstado = "Abierto"
+            numeroID = listaDeSolicitudes.length + 1
+            
+            crearSolicitud(numeroID, nuevaDescripción.value, nuevaFecha, nuevoEstado)
         }
         else{
-                
             var solicitudVieja = buscarSolicitud(idSolicitudVieja)        
-            var fechaSolicitudVieja = solicitudVieja.FechaSolicitud,
-            estadoSolicitudVieja = solicitudVieja.Estado
-            descripcionSolicitudNueva = nuevaDescripción.value;
-            
-            const nuevaLista = listaDeSolicitudes.filter(solicitud => solicitud.ID != idSolicitudVieja)
+            listaDeSolicitudes = listaDeSolicitudes.filter(solicitud => solicitud.ID != idSolicitudVieja)
 
-            nuevaLista.push({
-                "ID": parseInt(idSolicitudVieja), 
-                "Descripción": descripcionSolicitudNueva,
-                "Estado": estadoSolicitudVieja,
-                "FechaSolicitud": fechaSolicitudVieja
-            })
-            
-            Lockr.set('solicitudes', nuevaLista)
-            
+            crearSolicitud(parseInt(idSolicitudVieja), nuevaDescripción.value, solicitudVieja.FechaSolicitud, solicitudVieja.Estado);
         }
 
         Lockr.rm('nuevo')
@@ -84,14 +54,28 @@ botonSolicitudes.addEventListener('click', () => {
     location.href = "misSolicitudes.html"
 })
 
+
+function crearSolicitud(numeroID, nuevaDescripción, nuevaFecha, nuevoEstado){
+    
+    listaDeSolicitudes.push({
+        ID: numeroID,
+        Descripción: nuevaDescripción,
+        FechaSolicitud: nuevaFecha,
+        Estado: nuevoEstado
+    });
+
+    Lockr.set('solicitudes', listaDeSolicitudes)
+}
+
+function buscarSolicitud(id){
+    return listaDeSolicitudes.find( solicitudVieja => solicitudVieja.ID == id)
+}
+
+
+
 if(idSolicitudVieja == null){
     nuevaDescripción.placeholder="Descripción de la solicitud"
 }
 else{
     nuevaDescripción.value = buscarSolicitud(idSolicitudVieja).Descripción
-}
-
-
-function buscarSolicitud(id){
-    return listaDeSolicitudes.find( solicitudVieja => solicitudVieja.ID == id)
 }
