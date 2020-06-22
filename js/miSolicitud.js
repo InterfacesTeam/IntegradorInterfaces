@@ -4,9 +4,9 @@ var botonCancelar = document.getElementById("botonCancelar");
 var botonPaginaPrincipal = document.getElementById("botonPaginaPrincipal");
 var botonSolicitudes = document.getElementById("botonSolicitudes");
 // Los 3 campos para llenar datos
-var descripcion = document.getElementById("inputDescripcion");
-var fecha = document.getElementById("inputFecha");
-var estado = document.getElementById("inputEstado");
+var inputDescripcion = document.getElementById("inputDescripcion");
+var inputFecha = document.getElementById("inputFecha");
+var inputEstado = document.getElementById("inputEstado");
 // Errores posibles
 var errorIngresaCosasVacias = document.getElementById("errorIngresaCosasVacias");
 var errorFechaInvalida = document.getElementById("errorFechaInvalida");
@@ -18,15 +18,15 @@ const diaDeHoy = f.getFullYear()+"-"+("0" + (f.getMonth() + 1)).slice(-2) +"-"+(
 
 // Inicio de los campos
 if(idSolicitudVieja == null){
-    descripcion.placeholder="Descripción de la solicitud"
-    fecha.value = diaDeHoy
+    inputDescripcion.placeholder="Descripción de la solicitud"
+    inputFecha.value = diaDeHoy
 }
 else{
     let solicitudVieja = buscarSolicitud(idSolicitudVieja)
 
-    descripcion.value = solicitudVieja.Descripción
-    fecha.value = convertirStringEnDate(solicitudVieja.FechaSolicitud)
-    estado.value = solicitudVieja.Estado
+    inputDescripcion.value = solicitudVieja.Descripción
+    inputFecha.value = convertirStringEnDate(solicitudVieja.FechaSolicitud)
+    inputEstado.value = solicitudVieja.Estado
 }
 
 //Acciones de botones
@@ -59,11 +59,11 @@ botonSolicitudes.addEventListener('click', () => {
 
 function corroboracionDeDatosYRegistro(){
 
-    if(descripcion.value == "" || estado.value == "Estado"){
+    if(inputDescripcion.value == "" || inputEstado.value == "Estado"){
         errorIngresaCosasVacias.style.display = "block"
     }
 
-    else if(fecha.value > diaDeHoy){
+    else if(inputFecha.value > diaDeHoy){
         errorFechaInvalida.style.display = "block"
     }
 
@@ -76,7 +76,7 @@ function corroboracionDeDatosYRegistro(){
             numeroID = idSolicitudVieja
         }
         
-        crearSolicitud(numeroID, descripcion.value, convertirDateEnString(fecha.value) , estado.value)
+        crearSolicitud(numeroID, inputDescripcion.value, convertirDateEnString(inputFecha.value) , inputEstado.value)
         Lockr.rm('nuevo')
         location.href = 'misSolicitudes.html'
     }

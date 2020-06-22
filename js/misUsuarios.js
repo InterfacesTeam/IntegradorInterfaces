@@ -23,9 +23,7 @@ botonSalir.addEventListener('click', ()  => {
 })
 
 botonNuevoUsuario.addEventListener('click', () => {
-    Lockr.set('nuevo', {
-        "ID": 99
-    })
+    Lockr.set('nuevo', null)
     location.href="miUsuario.html"
 })
 
@@ -34,7 +32,7 @@ botonEditar.addEventListener('click', () => {
         error.style.display = 'block'
     }
     else{
-        Lockr.set('nuevo', { "ID": IDCheckeado() })
+        Lockr.set('nuevo', parseInt(IDCheckeado()))
         location.href ="miUsuario.html";
     }
 })
@@ -61,7 +59,7 @@ botonDebugear.addEventListener('click', () =>{
         "Avatar":"https://avatars.dicebear.com/v2/identicon/41666728asdqwe12.svg",
         "Nombre": "41666728",
         "Contraseña":"asdqwe12",
-        "Activo": "Activo"
+        "Activo": "Desconectado"
     },{
         
         "ID": 2,

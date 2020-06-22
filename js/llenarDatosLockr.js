@@ -29,7 +29,7 @@ function cargarDatosLockr(){
             "Avatar":"https://avatars.dicebear.com/v2/identicon/41666728asdqwe12.svg",
             "Nombre": "41666728",
             "Contraseña":"asdqwe12",
-            "Activo": "Activo"
+            "Activo": "Desconectado"
         },{
             
             "ID": 2,

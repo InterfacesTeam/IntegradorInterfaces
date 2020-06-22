@@ -47,17 +47,14 @@ body{
     color: red;
     font-size: 15px;
     display: none;
-}
-
-#errorDatos{
-    display: none;
+    width: 50%;
+    text-align: left;
 }
 
 .botones{
-    width: 300px;
-    height: 40px;
-    margin: 7px auto;
-    padding: 5px;
+    width: 50%;
+    height: 50px;
+    margin-top: 2%;
     border-radius: 10px;
     border-style: none;
     
@@ -76,9 +73,10 @@ body{
 .botonesInicioRegister{
     font-family: Arial, Helvetica, sans-serif;
     background: #0085FF;
-    width: 310px;
+    width: 51%;
     height: 50px;
     color: white;
+    margin-bottom: 2%;
 }
 
 .botonesInicioRegister:hover{

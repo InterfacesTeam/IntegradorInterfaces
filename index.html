@@ -13,19 +13,21 @@
         <img src="img/unahur.png" id="imagenUnahur">
         <form>
             
-            <input type="text" class ="userpass botones" placeholder="Usuario" id="usuarioLogin"> 
-            <br>
-            <input type="password" class ="userpass botones" placeholder="Contraseña" id="contraseñaLogin">
-        
-            <br>
+            <input type="text" class ="userpass botones" placeholder="  Usuario" id="usuarioLogin"> 
+            <h4 class="erroresPosibles" id="errorNoIngresaUsuario">No ingresó usuario</h4>
+            <h4 class="erroresPosibles" id="errorUsuario">Usuario incorrecto</h4>
+
+
+            <input type="password" class ="userpass botones" placeholder="  Contraseña" id="contraseñaLogin">
+            <h4 class="erroresPosibles" id="errorNoIngresaContraseña">No ingresó contraseña</h4>
+            <h4 class="erroresPosibles" id="errorContraseña">Contraseña incorrecta</h4>
+            
             <button type="button" class="botones botonesInicioRegister" id="iniciarSesion">INICIAR SESIÓN</button>
             <br>
             <button type="button" class="botonesLogin" id="noPuedoIniciarSesion">¿NO PUEDE INICIAR SESIÓN?</p>
             
             <button type="button" class="botonesLogin" id="crearCuenta">CREAR CUENTA</p>
-
-            <h4 class="erroresPosibles" id="errorIngresoUsuario">Usuario incorrecto</h4>
-            <h4 class="erroresPosibles" id="errorContraseña">Contraseña incorrecta</h4>
+            
             <div class="carga" id="rueditaLogin"></div>
             
         </form>

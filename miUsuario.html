@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mi usuario</title>
-        <link rel="stylesheet" href="css/miUsuario.css">
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/miUsuario.css">
         <link rel="stylesheet" href="css/cabecera.css">
     </head>
     <body>
@@ -21,11 +21,24 @@
         
         <div id="caja">
             
-            <input type="text" class="inputEdicion" id="nombre">
-            <input type="password" class="inputEdicion" id="contraseña">
+            <input type="text" class="form-control inputs" id="nombre">
+            <input type="password" class="form-control inputs" id="contraseña">
 
-            <h4 id="ningunDato" class="error">Los datos que ingresó están vacios</h4>
-            <h4 id="datosErroneos" class="error">Datos incorrectos. Ingreselos nuevamente</h4>
+            <label id="combinación">
+                <select class="form-control inputs" id="inputActivo">
+                    <option selected>Estado</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Desconectado">Desconectado</option>
+                </select>
+                
+                <form>
+                    <input type="date" class="form-control inputs" id="inputFecha">
+                </form>
+            </label>
+
+            <h4 id="errorNingunDato" class="error">Los datos que ingresó están vacios</h4>
+            <h4 id="errorDatosErroneos" class="error">El usuario o la contraseña son incorrectos. Ingreselos nuevamente</h4>
+            <h4 id="errorFechaInvalida" class="error">La fecha que ingresó no es válida</h4>
             <button type="button" class="botones btn btn-primary" id="botonGuardar">Guardar</button>
             <button type="button" class="botones btn btn-secondary" id="botonCancelar">Cancelar</button>
         </div>
